@@ -120,9 +120,9 @@ def login(USERNAME: str, PASSWORD: str, PROVIDER: str) -> bool:
 import os
 import configparser
 def user_data() -> tuple:
-    if os.path.isfile("config.ini"):
+    if os.path.isfile("zj_account.ini"):
         config = configparser.ConfigParser()
-        config.read("config.ini", encoding="utf-8")
+        config.read("zj_account.ini", encoding="utf-8")
         username = config.get('Userdata', 'username')
         password = config.get('Userdata', 'password')
         provider = config.get('Userdata', 'provider')
@@ -136,10 +136,10 @@ password = 此处改为你的密码
 ;运营商 (校园网, 中国移动, 中国电信, 中国联通)
 provider = 此处改为你的运营商
 """
-        with open("config.ini", "w", encoding="utf-8") as f:
+        with open("zj_account.ini", "w", encoding="utf-8") as f:
             f.write(config_content)
         print(" " * max_width, end='\r')
-        print("请配置 config.ini 后重试！")
+        print("请配置 zj_account.ini 后重试！")
         return ()
 
 if __name__ == '__main__':
@@ -147,7 +147,7 @@ if __name__ == '__main__':
     import re
 
 
-    def get_wifi_name() -> str | None:
+    def get_wifi_name() -> str | 无:
         """获取当前连接的WiFi名称"""
         try:
             # 执行命令获取WiFi信息
@@ -162,7 +162,7 @@ if __name__ == '__main__':
                 wifi_name = ssid_match.group(1).strip()
                 return wifi_name
             else:
-                return None
+                return 无
 
         except Exception as e:
             return f"获取失败: {str(e)}"
