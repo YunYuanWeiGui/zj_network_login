@@ -14,9 +14,10 @@
 
 ## 使用方法：
 
-1. 运行`.exe`文件，会在当前位置生成`config.ini`的一个配置文件  
+1. 运行`.exe`文件，会在当前位置生成`zj_account.ini`的一个配置文件  
    <img width="1687" height="945" alt="image" src="https://github.com/user-attachments/assets/31cdae70-5a89-49b5-8cf4-1e1ed6fc714c" />
-2. 打开`config.ini`文件，按照文件中的提示输入自己的校园网账号信息  
+   > 注：更新后`config.ini`已被重命名为`zj_account.ini`
+2. 打开`zj_account.ini`文件，按照文件中的提示输入自己的校园网账号信息  
    <img width="813" height="1098" alt="image" src="https://github.com/user-attachments/assets/fa4d4723-5c00-4a42-8f19-07e37aa42b6e" />
 3. 再次运行`.exe`文件即可正常使用
 
