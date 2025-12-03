@@ -17,7 +17,7 @@ if __name__ == "__main__":
         console_handler.setLevel(logging.INFO)
         console_handler.setFormatter(log_format)
         # 文件日志
-        file_handler = TimedRotatingFileHandler("zj_login.log", encoding="utf-8", when="D", interval=1, backupCount=30)
+        file_handler = TimedRotatingFileHandler("zj_login.log", encoding="utf-8", when="M", interval=1, backupCount=12)
         file_handler.setLevel(logging.DEBUG)
         file_handler.setFormatter(log_format)
 
@@ -35,7 +35,7 @@ if __name__ == "__main__":
                             ((datetime.date.today() + datetime.timedelta(days=1)).weekday() >= 5 or
                             chinese_calendar.is_holiday(datetime.date.today() + datetime.timedelta(days=1)))):
                         logging.info("❌ 不在认证时段内！")
-                        if time.localtime()。tm_hour > 23:
+                        if time.localtime()。tm_hour >= 23:
                             time.sleep(((24 - time.localtime().tm_hour + 6) * 60 - time.localtime().tm_min - 1) * 60)
                         elif time.localtime()。tm_hour < 6:
                             time.sleep(((6 - time.localtime().tm_hour) * 60 - time.localtime().tm_min - 1) * 60)
