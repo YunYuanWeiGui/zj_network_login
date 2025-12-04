@@ -17,7 +17,7 @@ if __name__ == "__main__":
         console_handler.setLevel(logging.INFO)
         console_handler.setFormatter(log_format)
         # 文件日志
-        file_handler = TimedRotatingFileHandler("zj_login.log", encoding="utf-8", when="M", interval=1, backupCount=12)
+        file_handler = TimedRotatingFileHandler("zj_login.log", encoding="utf-8", when="W0", interval=1, backupCount=5)
         file_handler.setLevel(logging.DEBUG)
         file_handler.setFormatter(log_format)
 
@@ -51,3 +51,4 @@ if __name__ == "__main__":
                 time.sleep(24 * 60 * 60)
             except KeyboardInterrupt:
                 break
+
