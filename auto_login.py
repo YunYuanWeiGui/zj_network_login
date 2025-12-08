@@ -31,7 +31,7 @@ if __name__ == "__main__":
                     logging.info("✅ 登陆成功")
                 else:
                     logging.info("❌ 登录失败")
-                    if not (6 <= time.localtime().tm_hour <= 23 and
+                    if not (6 <= time.localtime().tm_hour <= 23 or
                             ((datetime.date.today() + datetime.timedelta(days=1)).weekday() >= 5 or
                             chinese_calendar.is_holiday(datetime.date.today() + datetime.timedelta(days=1)))):
                         logging.info("❌ 不在认证时段内！")
@@ -51,4 +51,5 @@ if __name__ == "__main__":
                 time.sleep(24 * 60 * 60)
             except KeyboardInterrupt:
                 break
+
 
