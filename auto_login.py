@@ -2,6 +2,7 @@ if __name__ == "__main__":
     import zj_network
     from ping3 import ping
     import time, datetime, chinese_calendar
+    import os
 
     user_data = zj_network.user_data()
     if user_data:
@@ -17,7 +18,9 @@ if __name__ == "__main__":
         console_handler.setLevel(logging.INFO)
         console_handler.setFormatter(log_format)
         # 文件日志
-        file_handler = TimedRotatingFileHandler("zj_login.log", encoding="utf-8", when="W0", interval=1, backupCount=5)
+        if not os.path.exists("logs"):
+            os.makedirs("logs")
+        file_handler = TimedRotatingFileHandler("logs/zj_login.log", encoding="utf-8", when="W0", interval=1, backupCount=5)
         file_handler.setLevel(logging.DEBUG)
         file_handler.setFormatter(log_format)
 
@@ -35,9 +38,9 @@ if __name__ == "__main__":
                             ((datetime.date.today() + datetime.timedelta(days=1)).weekday() >= 5 or
                             chinese_calendar.is_holiday(datetime.date.today() + datetime.timedelta(days=1)))):
                         logging.info("❌ 不在认证时段内！")
-                        if time.localtime()。tm_hour >= 23:
+                        if time.localtime().tm_hour >= 23:
                             time.sleep(((24 - time.localtime().tm_hour + 6) * 60 - time.localtime().tm_min - 1) * 60)
-                        elif time.localtime()。tm_hour < 6:
+                        elif time.localtime().tm_hour < 6:
                             time.sleep(((6 - time.localtime().tm_hour) * 60 - time.localtime().tm_min - 1) * 60)
             try:
                 time.sleep(60)
@@ -51,6 +54,3 @@ if __name__ == "__main__":
                 time.sleep(24 * 60 * 60)
             except KeyboardInterrupt:
                 break
-
-
-
